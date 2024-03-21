@@ -34,4 +34,4 @@ The Reminder Application is licensed under the MIT License, which allows for fre
 
 ## Contact Us:
 
-If you have any questions, feedback, or suggestions regarding the Reminder Application, please don't hesitate to reach out to us. You can contact the project maintainers via email at [pellisser.n@northeastern.edu](mailto:pellisser.n@northeastern.edu).
+If you have any questions, feedback, or suggestions regarding the Reminder Application, please don't hesitate to reach out to us. You can contact the project maintainers via email at [pellisser.n@northeastern.edu](mailto:pellissery.n@northeastern.edu).
