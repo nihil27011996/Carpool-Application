@@ -5,7 +5,6 @@ div .main {
     width: 100vw;
     height: 100vh; // set the height of the element to 100% of the viewport height
     top:0px;
-    overflow: scroll;
   }
 
   div .app-name{
@@ -20,9 +19,11 @@ div .main {
   }
   .img{
     z-index: 2;
-    left:980px;
     position: relative;
-    top:210px;
+    background-position: center;
+    background-size: cover;
+    width: 100vw; 
+    height: 100vh;
   }
 
   .logo{

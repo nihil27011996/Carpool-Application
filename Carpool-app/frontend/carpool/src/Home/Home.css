@@ -3,8 +3,65 @@ div .main {
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  top: 0px;
-  overflow: scroll;
+  
+}
+
+.home-container {
+  position: relative;
+}
+
+.home5 {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+.container-button {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  top: 60%;
+  left: 70%;
+}
+
+/* .car {
+  height: 70px;
+  width: 250px;
+  border: 1px solid black;
+  padding-top: 10px;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #0f0e0e;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: #525151;
+} */
+
+.car {
+  height: 50px; /* Adjust the height as needed */
+  width: 200px; /* Adjust the width as needed */
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: 1rem; /* Adjust the font size as needed */
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #0f0e0e;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+
+.car:hover, .car:focus {
+  background-color: #307FCE;
+  color: #ffffff;
 }
 
 div .app-name {
@@ -49,29 +106,11 @@ div h1 {
   left: 200px;
 }
 
-div h2 {
-  font-size: 5rem;
-  font-weight: bold;
-  align-items: center;
-  margin-right: 300px;
-  margin-top: 10px;
-  color: #333;
-  margin-bottom: 100px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  z-index: 2;
-  position: relative;
-  left: 1080px;
-  bottom: 200px;
-}
 
-.car {
-  border: 1px solid black;
-  position: relative;
-  z-index: 14;
-  top: -280px;
-}
 
-div button {
+
+
+/* div button {
   margin: 10px;
   margin-top: 0px;
   left: -25rem;
@@ -96,4 +135,6 @@ div button {
 div button:hover, div button:focus {
   background-color: #307FCE;
   color: #ffffff;
-}/*# sourceMappingURL=Home.css.map */
+} */
+
+/*# sourceMappingURL=Home.css.map */

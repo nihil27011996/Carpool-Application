@@ -10,34 +10,18 @@ const Home = () =>{
   
 
         <div className='main'>
-             <div>
-             <img className='home5' src={img} style={{ width: "100%" }}  alt="logo"/>
-                {/* <h1 >
-                    Ride Share
-                </h1>
-                 */}
+             <div classNmae = 'home-container'>
+             <img className='home5' src={img}  alt="logo"/>
               
                
-                <h2>
+                <div className = 'container-button'>
                 <Link to ='/login'>
-             <button className='car'>
-                Car Pool It !
-            </button>
+                    <button className='car'>
+                        Car Pool It !
+                    </button>
                 </Link>
-            </h2>
+                </div>
             </div>
-            {/* <div className='logos'>
-            <img className='logos1' src='/images/safety.png' alt="logo"/>
-            <img className='logos2' src='/images/privacy.png' alt="logo"/>
-            <img className='logos3' src='/images/security.png' alt="logo"/>
-
-            </div> */}
-          
-            
-            {/* <div>
-                <img className='home4' src='/images/home4.png' alt="logo"/>
-                
-            </div>  */}
         </div> 
       
             
