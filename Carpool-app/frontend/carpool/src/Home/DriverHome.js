@@ -7,7 +7,7 @@ import { FaStar } from "react-icons/fa";
 
 
 
-import '../Home/DriverHome.css';
+//import '../Home/DriverHome.css';
 import { Link } from 'react-router-dom';
 
 const libraries = ['places'];

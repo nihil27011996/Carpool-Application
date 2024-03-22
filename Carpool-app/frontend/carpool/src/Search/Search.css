@@ -109,12 +109,6 @@ div .payment {
   background-color: #ff9800;
 }
 
-body {
-  font-family: "Open Sans";
-  font-weight: 100;
-  display: flex;
-  overflow: scroll;
-}
 
 div input ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.7);

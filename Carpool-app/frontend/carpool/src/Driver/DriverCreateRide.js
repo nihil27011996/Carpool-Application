@@ -3,7 +3,7 @@ import React, { useState,useEffect , useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useJsApiLoader ,GoogleMap, LoadScript, DirectionsService, DirectionsRenderer,Autocomplete } from '@react-google-maps/api';
-import './DriverCreateRide.css';
+//import './DriverCreateRide.css';
 
 
 

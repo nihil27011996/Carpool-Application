@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes ,Link } from 'react-router-dom';
 import './Login.css';
+
 import img from '../Images/carrrr.avif';
 
 const Login = () => {
@@ -109,35 +110,35 @@ const Login = () => {
   }
 
   return (
+<div className ="login-parent-container">
+  <div className="login-gif-container">
+    <img className="login-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
+  </div>
+      <div className = "login-container"> 
+          <form className="loginpage-login-form">
+            <p className="login-text">
+              <span className="fa-stack fa-lg">
+                <i className="fa fa-circle fa-stack-2x"></i>
+                <i className="fa fa-lock fa-stack-1x"></i>
+              </span>
+            </p>
+            <input type="email" value={email} onChange={handleEmailChange}  className="login-username" autoFocus={true} required={true} placeholder="Email" />
+            <input type="text" value={username} onChange={handleUsernameChange} className="login-username" autoFocus={true} required={true} placeholder="Username" />
+            <input className="login-password" required={true} type="text" value={password} onChange={handlePasswordChange} placeholder="Password" />
+            <p className="login-sign-up">Don't have an account?
+            <a  href="/createProfile">Sign up now</a></p>
+            <button type="button"  onClick={handleSubmit} name="Login" value="LOG IN" className="login-login-submit" > LOG IN </button>
 
-    <div> 
-    <form className="loginpage-login-form">
-      <p className="login-text">
-        <span className="fa-stack fa-lg">
-          <i className="fa fa-circle fa-stack-2x"></i>
-          <i className="fa fa-lock fa-stack-1x"></i>
-        </span>
-      </p>
-      <input type="email" value={email} onChange={handleEmailChange}  className="login-username" autoFocus={true} required={true} placeholder="Email" />
-      <input type="text" value={username} onChange={handleUsernameChange} className="login-username" autoFocus={true} required={true} placeholder="Username" />
-      <input className="login-password" required={true} type="text" value={password} onChange={handlePasswordChange} placeholder="Password" />
-      <button type="button"  onClick={handleSubmit} name="Login" value="LOG IN" className="login-login-submit" > LOG IN </button>
+          </form>{/* 
 
-      <p className="login-sign-up">Don't have an account?
-       <a  href="/createProfile">Sign up now</a></p>
-    </form>
-    <div className="container" style={{ marginTop: '50px', width: '50%', height: 'auto' }}>
-      
-    </div>
-<div>
-  <img className="login-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
-</div>
-    <a href="#" className="loginn-forgot-pass">forgot password?</a>
+          <a href="#" className="loginn-forgot-pass">forgot password?</a> */}
 
-    <div className="login-underlay-photo"></div>
-    <div className="login-underlay-black"></div> 
+          {/* <div className="login-underlay-photo"></div> */}
+          {/* <div className="login-underlay-black"></div> */} 
 
-    </div>
+          </div>
+          </div>
+
       );
     };
 
