@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes ,Link } from 'react-router-dom';
-//import './ProfileCreation.css';
+import './ProfileCreation.css';
 
 
 const ProfileCreation = () => {
@@ -166,83 +166,35 @@ const ProfileCreation = () => {
 
   return (
     
-  <div> 
-    <div>
-  <img className="carpool-profile" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
-</div>
-<form className="signup-login-form">
-  <p className="profile-login-text">
-    <span className="fa-stack fa-lg">
-      <i className="fa fa-circle fa-stack-2x"></i>
-      <i className="fa fa-lock fa-stack-1x"></i>
-    </span>
-  </p>
-  <input type="email" value={email} onChange={handleEmailChange}  className="login-username" autoFocus={true} required={true} placeholder="Email" />
-  <input type="text" value={username} onChange={handleUsernameChange} className="login-username" autoFocus={true} required={true} placeholder="Username" />
-  <input type="text" value={name} onChange={handleNameChange} className="login-username" autoFocus={true} required={true} placeholder="name" />
-  <input className="login-password" required={true} type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
-  <select id="commuterType" name="commuterType" className="profile-login-username" value={commuterType} onChange={handlecommuterTypeChange}>
-    <option  value="">Select</option>
-    <option  value="Rider">Rider</option>
-    <option  value="Driver">Driver</option>
-  </select>
-  <input type="submit"  onClick={handleSubmit} name="Login" value="CREATE PROFILE" className="profile-login-submit" />
-</form>
-
-<a href="/login" className="login">LET'S LOG YOU IN..</a>
-<div className="profile-underlay-photo"></div>
-<div className="profile-underlay-black"></div> 
+<div className ="register-parent-container"> 
+  <div className="register-gif-container">
+    <img className="register-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
+  </div>
+  <div className = "register-container"> 
+      <form className="signup-login-form">
+        <p className="profile-login-text">
+          <span className="fa-stack fa-lg">
+            <i className="fa fa-circle fa-stack-2x"></i>
+            <i className="fa fa-lock fa-stack-1x"></i>
+          </span>
+        </p>
+        <input type="email" value={email} onChange={handleEmailChange}  className="login-username" autoFocus={true} required={true} placeholder="Email" />
+        <input type="text" value={username} onChange={handleUsernameChange} className="login-username" autoFocus={true} required={true} placeholder="Username" />
+        <input type="text" value={name} onChange={handleNameChange} className="login-username" autoFocus={true} required={true} placeholder="name" />
+        <input className="login-password" required={true} type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
+        <select id="commuterType" name="commuterType" className="profile-login-username" value={commuterType} onChange={handlecommuterTypeChange}>
+          <option  value="">Select</option>
+          <option  value="Rider">Rider</option>
+          <option  value="Driver">Driver</option>
+        </select>
+        <div className="register-button-container"><input type="submit"  onClick={handleSubmit} name="Login" value="CREATE PROFILE" className="profile-login-submit" /></div>
+        
+        <a href="/login" className="login">LET'S LOG YOU IN..</a>
+      </form>
+     
+    </div>
 </div>
   );
 };
-   /* /* {/*    <img src="/carpool.jpg" alt="bgimg" className="bckimg"/> */
-    {/* <form className="profile-creation" onSubmit={handleSubmit}>
-      <h2>Profile Creation</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <label>
-        Username:
-        <input type="text" value={username} onChange={handleUsernameChange} />
-      </label>
-      <br></br>
-      <label>
-        Name:
-        <input type="text" value={driverName} onChange={handledriverNameChange} />
-      </label>
-      <br></br>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={handleEmailChange} />
-      </label>
-      <br></br>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </label>
-      <br></br>
-      <label>
-       Re-Password:
-        <input type="password" value={repassword} onChange={handlerePasswordChange} />
-      </label>
-      <br></br>
-      <label>
-        Commuter Status:
-        <select value={commuterType} onChange={handlecommuterTypeChange}>
-          <option value="">Select</option>
-          <option value="Rider">Rider</option>
-          <option value="Driver">Driver</option>
-        </select>
-      </label>
-      <br></br>
-      <button type="submit">Create Profile</button>
-      {showLoginButton && (
-  
-        <button type="submit">
-        <Link to="/login">* LOG IN * </Link>
-      </button>
-      )}
-    </form> 
-    </div> 
-  
- */}
 
 export default ProfileCreation;

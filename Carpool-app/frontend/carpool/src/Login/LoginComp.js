@@ -45,7 +45,7 @@ const Login = () => {
       alert('Please fill out all fields.');
       return;
     }
-
+    
     // Check if the email address is valid
     const emailPattern = /\S+@\S+\.\S+/;
     if (!emailPattern.test(email)) {
@@ -56,8 +56,9 @@ const Login = () => {
     // Submit the form
 
     //console.log(username)
-    const existingRecord = await fetch(`http://localhost:9000/userAuths/${username}`);
-    const existingRecordData = await existingRecord.json();
+    const existingRecordResponse = await fetch(`http://localhost:9000/userAuths/${username}`);
+    const existingRecordData = await existingRecordResponse.json();
+
     //const recordExists = existingRecordData.some(record => record.userName === username || record.userEmail === email );
     if (!username || !password) {
       alert("All fields are required.");
@@ -67,9 +68,9 @@ const Login = () => {
       alert("Invalid commuter status selected.");
       return;
     } */
-  
    // existingRecordData.forEach(record =>{
     if (existingRecordData) {
+      
       if (existingRecordData.userName == username && existingRecordData.userPassword == password) {
         if(existingRecordData.commuterType === 'Rider' ){
           setRiderLoginButton(true);
@@ -116,17 +117,20 @@ const Login = () => {
   </div>
       <div className = "login-container"> 
           <form className="loginpage-login-form">
-            <p className="login-text">
-              <span className="fa-stack fa-lg">
-                <i className="fa fa-circle fa-stack-2x"></i>
-                <i className="fa fa-lock fa-stack-1x"></i>
-              </span>
-            </p>
+            <div className="login-text-container">
+              <p className="login-text">
+                <span className="fa-stack fa-lg">
+                  <i className="fa fa-circle fa-stack-2x"></i>
+                  <i className="fa fa-lock fa-stack-1x"></i>
+                </span>
+              </p>
+            </div>
+
             <input type="email" value={email} onChange={handleEmailChange}  className="login-username" autoFocus={true} required={true} placeholder="Email" />
             <input type="text" value={username} onChange={handleUsernameChange} className="login-username" autoFocus={true} required={true} placeholder="Username" />
-            <input className="login-password" required={true} type="text" value={password} onChange={handlePasswordChange} placeholder="Password" />
-            <p className="login-sign-up">Don't have an account?
-            <a  href="/createProfile">Sign up now</a></p>
+            <input className="login-password" required={true} type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
+            <div className="createprofile-container"><p className="login-sign-up">Don't have an account?
+            <a  href="/createProfile">Sign up now</a></p></div>
             <button type="button"  onClick={handleSubmit} name="Login" value="LOG IN" className="login-login-submit" > LOG IN </button>
 
           </form>{/* 

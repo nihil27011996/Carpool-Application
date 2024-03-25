@@ -10,14 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import MapComponent from '../map/MapComponent';
 
 const containerStyle = {
-  width: '550px',
-  height: '500px',
-  margin: '50px',
-top:'-80px',
-right: '100px'
-
+  width: '98%',
+  height: '98%',
+  top: '1%', // Adjust as needed
+  bottom: '1%', // Adjust as needed
+  borderRadius: '10px'
 };
-
 //define a center point for Maps to load
 const center = {
   lat: 37.7749,
@@ -198,58 +196,56 @@ const calculateCost = (cost) => {
   return (
 
 
-      <div className='main-page'> 
-     <div className='navMenu' >
-      <a href='/riderHome'>Rider Home</a> &nbsp; &nbsp;
-      <a href='/riderLogin'>Find a Ride</a> &nbsp; &nbsp;
-      <a href='/riderpastRides'>Past Rides</a> &nbsp; &nbsp;
-      <a href='/homePage'>Logout</a>
-      <div className="dot"></div>
-</div>
-{/* <div className="alert">
-        <span className="closebtn">&times;</span>  
-        <strong>Hey, {driverId} </strong> You have a Ride Request !
-      </div> */}
-        <div>
-  <img className="search-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
-</div>
-      <form className="search-login-form">
-        <p className="search-login-text">
-          <span className="fa-stack fa-lg">
-            <i className="fa fa-circle fa-stack-2x"></i>
-            <i className="fa fa-lock fa-stack-1x"></i>
-          </span>
-        </p>
-        <Autocomplete>
-        <input id="origin" type="text" name= 'Origin'   ref={originRef}  className="login-username" autoFocus={true} required={true} placeholder="From?" />
-        </Autocomplete>
+    <div className='main-page'> 
+        <div className='nav-container'>
+          
+        </div>
+        <div className='navMenu' >
+          <a href='/riderHome'>Rider Home</a> &nbsp; &nbsp;
+          <a href='/riderLogin'>Find a Ride</a> &nbsp; &nbsp;
+          <a href='/riderpastRides'>Past Rides</a> &nbsp; &nbsp;
+          <a href='/homePage'>Logout</a>
+        </div>
 
-        <Autocomplete>
-        <input  id="destination" type="text" name = 'Destination'   ref={destinationRef} className="login-username" autoFocus={true} required={true} placeholder="Where to?" />
-        </Autocomplete>
+        <div className='seacrh-gif-container'>
+        <img className="search-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
+        </div>
+        <div className='seacrh-container'>
+          <div className='search-container-form'>
+            <form className="search-login-form">
+                    <p className="search-login-text">
+                      <span className="fa-stack fa-lg">
+                        <i className="fa fa-circle fa-stack-2x"></i>
+                        <i className="fa fa-lock fa-stack-1x"></i>
+                      </span>
+                    </p>
+                    <Autocomplete>
+                    <input id="origin" type="text" name= 'Origin'   ref={originRef}  className="login-username" autoFocus={true} required={true} placeholder="From?" />
+                    </Autocomplete>
 
-        <input className="login-username" required={true} id="pickUpTime" type="datetime-local" value={pickUpTime} onChange={onPickUpTimeChange} placeholder="Time Please! " />
-        
-        <input id="seats" type="number" value={seats} onChange={onSeatChange} className="login-username" />
-  
-        {(showButton == true ) ? (<button type="submit"  className="search-login-submit" onClick={searchForRide}>GET ME A RIDE!</button>): <div className = 'message-request'>
-        
-        <div className="alert">
-        <span className="closebtn">&times;</span>  
-        <strong>Oops! Looks like you have already requested a ride. Kindly wait..</strong>
-      </div> 
-      </div> }
-        
-       
-      </form>
-     
-      <div className="underlay-photo"></div>
-      <div className="underlay-black"></div> 
-      
-      <div style={containerStyle}>
+                    <Autocomplete>
+                    <input  id="destination" type="text" name = 'Destination'   ref={destinationRef} className="login-username" autoFocus={true} required={true} placeholder="Where to?" />
+                    </Autocomplete>
 
-      </div>
-   <div className='googleMap'>
+                    <input className="login-username" required={true} id="pickUpTime" type="datetime-local" value={pickUpTime} onChange={onPickUpTimeChange} placeholder="Time Please! " />
+                    
+                    <input id="seats" type="number" value={seats} onChange={onSeatChange} className="login-username" />
+              
+                    {(showButton == true ) ? (<div className='search-button-container'>
+                    <button type="submit"  className="search-login-submit" onClick={searchForRide}>GET ME A RIDE!</button>
+                      </div>): <div className = 'message-request'>
+                    
+                    <div className="alert">
+                    <span className="closebtn">&times;</span>  
+                    <strong>Oops! Looks like you have already requested a ride. Kindly wait..</strong>
+                  </div> 
+                  </div> }
+                
+              
+            </form>
+          </div>  
+          <div className='map-container'>
+          <div className='googleMap'>
       <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
@@ -274,34 +270,63 @@ const calculateCost = (cost) => {
             </div>) : null
           
           }
-{/* <div>
-  <GetClosestDriver/>
-</div>
- */}
           {(showPayment == true) ? (
                       <div className="payment">
                       <PaymentComp  
                       cost = {calculateCost}
-                     // riderEmail = {userEmail}
                        riderEmail="rutuja.patil17@vit.edu"
-                       //riderUserName = {userName}
                        riderUserName="riderRutuja" 
                        />
                       </div>
-           /*  <div className="payment">
-           { <a  href="/payment" onClick={showPopup}>
-        Confirm the seat! Let's complete the Payment....
-        </a> }
-        </div>  */
 
         ) : (
       <p></p>
         )}
       </div>
-      </div>
+          </div>
+              
+        </div>
+            
+{/*         <div className='googleMap'>
+      <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={13}
+          >
+            {directions && <DirectionsRenderer directions={directions} />}
+          </GoogleMap>
+          </div>
+          <div>
+            {(diplayDrivers === true) ? (<div>
+              <GetClosestDriver
+              startLat={origin.latProp}
+              startLon={origin.lngProp}
+              endLat={destination.latProp}
+              endLon={destination.lngProp}
+              seats = {seats}
+              origin = {originRef.current.value}
+              destination = {destinationRef.current.value}
+              riderID = {parsedData.userName}
+              
+            />
+            </div>) : null
+          
+          }
+          {(showPayment == true) ? (
+                      <div className="payment">
+                      <PaymentComp  
+                      cost = {calculateCost}
+                       riderEmail="rutuja.patil17@vit.edu"
+                       riderUserName="riderRutuja" 
+                       />
+                      </div>
 
+        ) : (
+      <p></p>
+        )}
+      </div> */}
 
-
+</div> 
 );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState,useEffect , useRef } from 'react';
 import { Link } from 'react-router-dom';
-//import './RiderHome.css';
+import './RiderHome.css';
 
 const libraries = ['places'];
 const Rider = () => {
@@ -41,51 +41,40 @@ const Rider = () => {
   };
   
   return (
-    <div >
-     <div className='navMenu' >
-      <a href='/riderHome'>Rider Home</a> &nbsp; &nbsp;
-      <a href='/riderLogin'>Find a Ride</a> &nbsp; &nbsp;
-      <a href='/riderpastRides'>Past Rides</a> &nbsp; &nbsp;
-      <a href='/homePage'>Logout</a>
-      <div className="dot"></div>
-</div>
-<div>
-  <img className="driver-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif" alt="bgimg"/>
-</div>
-<div className="card">
-      <img src="https://as2.ftcdn.net/v2/jpg/00/65/77/27/1000_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="John" />
-    
-      <p className="title">Rider: &nbsp;
-      
-      {profileData.RiderName}
-      <br></br>
-      <p className='title'>  Email: &nbsp;
-      {profileData.RiderEmail}
-      </p>
-      <br></br>
-      <p className='title'> Ratings: &nbsp;
-      {profileData.ratings}
+    <div className='rider-home-main-page'>
+        <div className='rider-home-navMenu' >
+          <a href='/riderHome'>Rider Home</a> &nbsp; &nbsp;
+          <a href='/riderLogin'>Find a Ride</a> &nbsp; &nbsp;
+          <a href='/riderpastRides'>Past Rides</a> &nbsp; &nbsp;
+          <a href='/homePage'>Logout</a>
+        </div>
+        <div className='rider-home-gif-container'>
+        <img className="rider-home-gif-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
+        </div>
+        <div className= 'rider-profle-container'>
+          <div className="card">
+            <div className = "rider-profile-image">
+              <img  src="https://as2.ftcdn.net/v2/jpg/00/65/77/27/1000_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="John" />
+            </div>
+            
+          <div className='rider-profile-details'>
+            <p className="title">Rider: &nbsp;
+              
+              {profileData.RiderName}
+              <p className='title'>  Email: &nbsp;
+              {profileData.RiderEmail}
+              </p>
+              <p className='title'> Ratings: &nbsp;
+              {profileData.ratings}
 
-      </p>
-      </p>
-     
-    </div>
+            </p>
+            </p>
+          </div>
 
-      <div className="underlay-photo"></div>
-      <div className="underlay-black"></div>
-
-     {/* <h1>
-        Profile
-     </h1>
-      <div >
-        <label>Raing</label>{rating}
-      </div>
-      <div >
-        <label>Name</label>{profileData.RiderName}
-      </div>
-      <div >
-        <label>Email</label>{profileData.RiderEmail}
-      </div> */}
+          
+          </div>
+        </div>
+          
     </div>
   );
 };

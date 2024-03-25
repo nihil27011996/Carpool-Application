@@ -10,7 +10,7 @@ const Home = () =>{
   
 
         <div className='main'>
-             <div classNmae = 'home-container'>
+             {/* <div classNmae = 'home-container'> */}
              <img className='home5' src={img}  alt="logo"/>
               
                
@@ -21,7 +21,7 @@ const Home = () =>{
                     </button>
                 </Link>
                 </div>
-            </div>
+            {/* </div> */}
         </div> 
       
             

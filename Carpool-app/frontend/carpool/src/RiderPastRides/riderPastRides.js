@@ -120,11 +120,9 @@ const RiderPastRides = () => {
       <a href='/homePage'>Logout</a>
       <div className="dot"></div>
 </div>
-<div className='grid-conatiner-view-drivers'>
+      <div className='grid-conatiner-view-drivers'>
         {DriverOrderData}
       </div>
-<div className="underlay-photo"></div>
-      <div className="underlay-black"></div>
 
     </div>
   );
