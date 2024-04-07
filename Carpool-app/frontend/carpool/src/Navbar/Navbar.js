@@ -1,4 +1,5 @@
 
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes ,Link } from 'react-router-dom';
 //import { Button } from 'antd';
 import Search from '../Search/search.js';
@@ -20,7 +21,7 @@ import DriverPastRides from '../DriverPastRides/driverPastRides.js';
 import RiderPastRides from '../RiderPastRides/riderPastRides.js';
 
 const Navbar = () => {
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
 
