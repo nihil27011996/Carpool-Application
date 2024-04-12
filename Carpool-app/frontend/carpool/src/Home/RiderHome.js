@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './RiderHome.css';
 import * as firebase from '../Config/firebase-config.js';
 import {ref , uploadBytes , getDownloadURL } from "firebase/storage"
-
+import RiderNavBar from '../Navbar/navBarComponent-rider.js';
+import GifComponent from '../Navbar/gifcomponent.js';
 
 const libraries = ['places'];
 const Rider = () => {
@@ -94,7 +95,7 @@ const Rider = () => {
 
   return (
     <div className='rider-home-main-page'>
-        <div className='rider-home-navMenu' >
+{/*         <div className='rider-home-navMenu' >
           <a href='/riderHome'>Rider Home</a> &nbsp; &nbsp;
           <a href='/riderLogin'>Find a Ride</a> &nbsp; &nbsp;
           <a href='/riderpastRides'>Past Rides</a> &nbsp; &nbsp;
@@ -102,9 +103,11 @@ const Rider = () => {
         </div>
         <div className='rider-home-gif-container'>
           <img className="rider-home-gif-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
-        </div>
+        </div> */}
+        <RiderNavBar/>
+        <GifComponent/>
         <div className= 'rider-profle-container'>
-          <div className="card">
+          <div className="rider-card">
               <div className = "rider-profile-image-container">
                 <div className = "rider-profile-image">
                     <img  src={imageUrl} alt="John" /> 

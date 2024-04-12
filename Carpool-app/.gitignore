@@ -27,7 +27,6 @@ yarn.lock
 # Express.js
 node_modules/
 *.log
-.env
 
 # Sass/Scss
 .sass-cache/

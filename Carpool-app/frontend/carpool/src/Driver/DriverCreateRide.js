@@ -1,16 +1,16 @@
 import React, { useState,useEffect , useRef } from 'react';
-//import { Button , Input } from 'antd';
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import { useJsApiLoader ,GoogleMap, LoadScript, DirectionsService, DirectionsRenderer,Autocomplete } from '@react-google-maps/api';
-//import './DriverCreateRide.css';
-
-
+import { useJsApiLoader ,Autocomplete } from '@react-google-maps/api';
+import './DriverCreateRide.css';
+import DriverNavBar from '../Navbar/navBarComponent-driver.js';
+import GifComponent from '../Navbar/gifcomponent.js';
+import { useSelector } from 'react-redux';
 
 const libraries = ['places'];
 const DriverRide = () => {
-  const storedData = localStorage.getItem('driver');
-  const parsedData = JSON.parse(storedData);
+/*   const storedData = localStorage.getItem('driver'); 
+  const parsedData = JSON.parse(storedData);*/
+  const parsedData = useSelector(state => state.driver.driver);
   console.log(parsedData);
   const navigate = useNavigate();
   const driverId = parsedData.userName;
@@ -88,7 +88,7 @@ return;
     /** @type React.MutableRefObject<HTMLInputElement>*/
     const destinationRef = useRef();
     const {isLoaded} = useJsApiLoader({
-      googleMapsApiKey: "AIzaSyBaE0BFCbpDBdN5NkUK2DA-2Jm7IRnoGZg" 
+      googleMapsApiKey: process.env.REACT_APP_GOOGLE_API 
       , libraries: libraries
     }
     )
@@ -130,7 +130,7 @@ return;
   };
  */
   const handleGeocodeLocation = async (location) => {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyBaE0BFCbpDBdN5NkUK2DA-2Jm7IRnoGZg`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.REACT_APP_GOOGLE_API}`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -244,73 +244,70 @@ return;
   
   return (
 
-<div className='main-page'> 
-<div className='navMenu' >
-      <a href='/driverHome'>Driver Home</a> &nbsp; &nbsp;
-      <a href='/driverLogin'>Post a Ride</a> &nbsp; &nbsp;
-      <a href='/pastRides'>Past Rides</a> &nbsp; &nbsp;
-      <a href='/driverApproval'>Request Approval</a> &nbsp; &nbsp;
-      <a href='/homePage'>Logout</a>
-      <div className="dot"></div>
-</div>
-<div>
-<img className="driverapp-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif" alt="bgimg"/>
-</div>
-      <form className="driver-login-form">
-      
-        <p className="driver-login-text">
-          <span className="fa-stack fa-lg">
-            <i className="fa fa-circle fa-stack-2x"></i>
-            <i className="fa fa-lock fa-stack-1x"></i>
-          </span>
-        </p>
+            <div className='driver-create-page'> 
+                <DriverNavBar driver={parsedData}/>
+                <GifComponent/>
+                <div className='driver-seacrh-container'>
+                  <form className="driver-login-form">
+                    <div className='driver-lock-logo'>
+                        <p className="driver-login-text-postride">
+                          <span className="fa-stack fa-lg">
+                            <i className="fa fa-circle fa-stack-2x"></i>
+                            <i className="fa fa-lock fa-stack-1x"></i>
+                          </span>
+                        </p>
+                    </div>
 
-        <Autocomplete>
-        <input id="StartingLocation" type="text" name = 'StartingLocation'   ref={originRef}  className="login-username" autoFocus={true} required={true} placeholder="From?" />
-        </Autocomplete>
+                    <div>
+                      <Autocomplete>
+                        <input id="StartingLocation" type="text" name = 'StartingLocation'   ref={originRef}  className="login-username" autoFocus={true} required={true} placeholder="From?" />
+                        </Autocomplete>
 
-        <Autocomplete>
-        <input id="Destination" type="text" name = 'StartingLocation'  ref={destinationRef}  className="login-username" autoFocus={true} required={true} placeholder="To?" />
-        </Autocomplete>
+                        <Autocomplete>
+                        <input id="Destination" type="text" name = 'StartingLocation'  ref={destinationRef}  className="login-username" autoFocus={true} required={true} placeholder="To?" />
+                        </Autocomplete>
 
-        <input id="seats" placeholder='Seats' type="number" value={data.Seats} name='Seats' onChange={driverValues} className="login-username" />
+                        <input id="seats" placeholder='Seats' type="number" value={data.Seats} name='Seats' onChange={driverValues} className="login-username" />
 
-        <input id="cost" placeholder='Cost' value={data.Cost} name='Cost' onChange={driverValues} className="login-username" />
+                        <input id="cost" placeholder='Cost' value={data.Cost} name='Cost' onChange={driverValues} className="login-username" />
+                    </div>
 
-        { (showButton === true ) ? (<button type="submit"  className="driver-login-submit" onClick={PostRide}>POST A RIDE!</button>) : 
-        <div className="alert">
-        <span className="closebtn">&times;</span>  
-        <strong>Hold on!</strong> Complete the previous Ride to start one!
-      </div>
 
-        }
-</form>
-<div className="underlay-photo"></div>
-      <div className="underlay-black"></div>
-      </div> 
-      );
-      }
+                      { (showButton === true ) ? (
+                      <div className='button-class'>
+                        <button type="submit"  className="driver-login-submit" onClick={PostRide}>POST A RIDE!</button>
+                      </div> )
+                         : 
+                        <div className="alert">
+                        <span className="closebtn">&times;</span>  
+                        <strong>Hold on!</strong> Complete the previous Ride to start one!
+                        </div> }
+                  </form>   
+                </div>
+                  
+              </div> 
+);}
 
-{/* 
-    <div >
-      <h1>*** Create a Ride Request ***</h1>
-      <Autocomplete>
-        <input name = 'StartingLocation' /* value={destination} /* onChange={onDestinationChange} */ /* ref={originRef}/>
-      </Autocomplete>
-       */
-     /*  <Autocomplete>
-      <input name = 'Destination' /* value={destination} /* onChange={onDestinationChange} */} {/*ref={destinationRef}/>
-      </Autocomplete> */}
+            {/* 
+                <div >
+                  <h1>*** Create a Ride Request ***</h1>
+                  <Autocomplete>
+                    <input name = 'StartingLocation' /* value={destination} /* onChange={onDestinationChange} */ /* ref={originRef}/>
+                  </Autocomplete>
+                  */
+                /*  <Autocomplete>
+                  <input name = 'Destination' /* value={destination} /* onChange={onDestinationChange} */} {/*ref={destinationRef}/>
+                  </Autocomplete> */}
 
-      {/* <input placeholder='Seats' value={data.Seats} name='Seats' onChange={driverValues}/>
-      <input placeholder='Cost' value={data.Cost} name='Cost' onChange={driverValues}/> */}
-      {/* <button
-      onClick={PostRide}
-      >
-        Create a ride
-      </button>
-    </div>
-  );
-}; */}
+                  {/* <input placeholder='Seats' value={data.Seats} name='Seats' onChange={driverValues}/>
+                  <input placeholder='Cost' value={data.Cost} name='Cost' onChange={driverValues}/> */}
+                  {/* <button
+                  onClick={PostRide}
+                  >
+                    Create a ride
+                  </button>
+                </div>
+              );
+            }; */}
 
 export default DriverRide;

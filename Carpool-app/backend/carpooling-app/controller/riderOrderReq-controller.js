@@ -45,7 +45,7 @@ export const findbyOrderNumber= async(request, response) =>{
     try{
         const id = request.params.DriverOrderNumber;
         const riderOrder = await getDriverOrderNumberReq(id);
-        setSuccessfulResponse(riderOrder,response);
+        response.status(200).json(riderOrder);
     } catch (err) {
         setErrorResponse(err,response);
 

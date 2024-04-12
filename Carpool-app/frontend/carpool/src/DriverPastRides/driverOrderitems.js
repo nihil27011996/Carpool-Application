@@ -18,11 +18,11 @@ const [error,setError] = useState('');
   
   const  showRideInformation =  async () => {
   try {
-    const response = await fetch(`http://localhost:9000/riderRequest/Rider/${props.orders}`);
+    const response = await fetch(`http://localhost:9000/riderOrders/driver/${props.orders}`);
     if (response.ok) {
     const data = await response.json();
-     
      if(Array.isArray(data)) {
+      
       const filteredDrivers = data.filter(item =>
         item.CommuteStatus == 'Approved' &&
         item.DriverId ==  props.driverid // Change column5 to the desired column for filtering
@@ -43,6 +43,7 @@ const [error,setError] = useState('');
   } catch (error) {
     setError('Failed to fetch profile data');
   }
+
 };
 
 
@@ -77,8 +78,34 @@ const [error,setError] = useState('');
 
   const handleRejectRider = async() => {
 
-        props.removeRequest(props.driverid)
 
+        /* props.removeRequest(props.driverid) */
+        if(rideRequest.length === 0) {
+          console.log("asdasd")
+          console.log(rideRequest)
+        }
+/*         fetch(`http://localhost:9000/riderOrders/${props.driverid}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+          })
+            .then(response => {
+              if (!response.ok) {
+                
+                throw new Error('Failed to delete reminder status');
+              }
+              // update the checkbox state in the component's state
+              //setCheckBox(checked);
+              //props.removeRequest(props.riderId)
+
+            })
+            .catch(error => {
+              console.error(error);
+              // handle the error
+            });
+
+            setShowRide(false);
+            console.log(rideRequest); */
+            
   }
  
 

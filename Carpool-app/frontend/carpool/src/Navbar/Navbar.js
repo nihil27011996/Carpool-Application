@@ -1,15 +1,10 @@
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes ,Link } from 'react-router-dom';
-//import { Button } from 'antd';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Search from '../Search/search.js';
-import Driver from '../Driver/Driver.js';
 import DriverRide from '../Driver/DriverCreateRide.js';
 import CreateProfile from '../User/UserProfileCreation.js';
-import RiderComp from '../Search/search.js';
 import DriverComp from '../Driver/DriverCreateRide.js';
-import ExampleComponent from '../example.js';
-import HomePage from '../HomePage.js';
 import AboutPage from '../AboutPage.js';
 import Login from '../Login/LoginComp.js';
 import Home from '../Home/Home.js';

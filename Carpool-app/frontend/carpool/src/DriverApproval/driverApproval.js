@@ -1,10 +1,14 @@
 import React, { useState,useEffect , useRef } from 'react';
 import { Link } from 'react-router-dom';
 import RideRequestItems from '../rideRequestItems/rideRequestItems.js';
+import { useSelector } from 'react-redux';
+import DriverNavBar from '../Navbar/navBarComponent-driver.js';
+import GifComponent from '../Navbar/gifcomponent.js';
 
 const Driverapproval = () => {
-  const storedData = localStorage.getItem('driver');
-  const driverData = JSON.parse(storedData);
+/*   const storedData = localStorage.getItem('driver');
+  const driverData = JSON.parse(storedData); */
+  const driverData = useSelector(state => state.driver.driver);
   const driverId = driverData.userName; 
   const [rideRequest,setRideRequest] = useState([]);
   const [driverOrders,setDriverOrders] = useState([]);
@@ -115,17 +119,8 @@ const Driverapproval = () => {
 
   return (
     <div >
-      <div>
-  <img className="driverapp-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif" alt="bgimg"/>
-</div>
-<div className='navMenu' >
-      <a href='/driverHome'>Driver Home</a> &nbsp; &nbsp;
-      <a href='/driverLogin'>Post a Ride</a> &nbsp; &nbsp;
-      <a href='/pastRides'>Past Rides</a> &nbsp; &nbsp;
-      <a href='/driverApproval'>Request Approval</a> &nbsp; &nbsp;
-      <a href='/homePage'>Logout</a>
-      <div className="dot"></div>
-</div>
+      <DriverNavBar driver = {driverData}/>
+      <GifComponent/>
 <div className="alert">
         <span className="closebtn">&times;</span>  
         <strong>Hey, {driverId} </strong> You have a Ride Request !

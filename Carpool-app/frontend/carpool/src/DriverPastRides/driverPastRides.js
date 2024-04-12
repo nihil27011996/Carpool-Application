@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import DriverPastOrders from './driverOrderitems.js';
 import './driverOrderItems.css';
 import './driverPastRides.css';
+import DriverNavBar from '../Navbar/navBarComponent-driver.js';
+import GifComponent from '../Navbar/gifcomponent.js';
+import { useSelector } from 'react-redux';
 
 const DriverPastRides = () => {
-  const storedData = localStorage.getItem('driver');
-  const driverData = JSON.parse(storedData);
+/*   const storedData = localStorage.getItem('driver');
+  const driverData = JSON.parse(storedData); */
+  const driverData = useSelector(state => state.driver.driver);
   const driverId = driverData.userName; 
   const [driverOrders,setDriverOrders] = useState([]);
   const [rating,setsetRating] = useState(0);
@@ -38,13 +42,15 @@ const DriverPastRides = () => {
   }; */
   const showCommuterInformation = async () => {
     try {
-      const response = await fetch(`http://localhost:9000/riderOrders/`);
+      console.log(driverData);
+      const response = await fetch(`http://localhost:9000/riderOrders/${driverId}`);
       if (response.ok) {
      const orderdata = await response.json();
       // console.log(orderdata)
         const filteredDriverOrder = orderdata.filter(item =>
             item.DriverPostStatus !== 'Cancelled' &&
-            item.DriverId ==  driverId  // Change column5 to the desired column for filtering
+            item.CommuteStatus !== null
+
           ); 
           setDriverOrders(filteredDriverOrder);         
       } else {
@@ -102,22 +108,11 @@ const DriverPastRides = () => {
   );
   return (
     <div >
-      <div>
-  <img className="carpool1" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif" alt="bgimg"/>
-</div>
-<div className='navMenu' >
-      <a href='/driverHome'>Driver Home</a> &nbsp; &nbsp;
-      <a href='/driverLogin'>Post a Ride</a> &nbsp; &nbsp;
-      <a href='/pastRides'>Past Rides</a> &nbsp; &nbsp;
-      <a href='/driverApproval'>Request Approval</a> &nbsp; &nbsp;
-      <a href='/homePage'>Logout</a>
-      
-</div>
-<div className='grid-conatiner-view-drivers'>
+                <DriverNavBar driver={driverData}/>
+                <GifComponent/>
+        <div className='grid-conatiner-view-drivers'>
         {DriverOrderData}
-      </div>
-<div className="underlay-photo"></div>
-      <div className="underlay-black"></div>
+        </div>
 
     </div>
   );

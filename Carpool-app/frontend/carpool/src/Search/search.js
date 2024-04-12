@@ -1,13 +1,11 @@
 import React, { useState ,useRef ,useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { GoogleMap,DirectionsRenderer, useJsApiLoader , Autocomplete } from '@react-google-maps/api';
 import PaymentComp from '../Payment/payment';
 import GetClosestDriver from './GetClosestDriver';
-import StripeCheckout from 'react-stripe-checkout';
 import emailjs from 'emailjs-com';
 import './Search.css';
-import { useNavigate } from 'react-router-dom';
-import MapComponent from '../map/MapComponent';
+import RiderNavBar from '../Navbar/navBarComponent-rider.js';
+import GifComponent from '../Navbar/gifcomponent.js';
 
 const containerStyle = {
   width: '98%',
@@ -33,15 +31,7 @@ const RiderFinder = () => {
   const [directions, setDirections] = useState(null);
   const [seats, setSeat] = useState('');
   const  [diplayDrivers,setDisplayDrivers] = useState(false);
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [location, setLocation] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [avaiableDriver, setAvaiableDriver] = useState([]);
-  const [riderLocation, setRiderLocation] = useState([]);
-  const driverLocation = [40.7282, -74.0776];
-  const [distance, setDistance] = useState('');
-  const [duration, setDuration] = useState('');
   const [showPayment, setshowPayment] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [costPerSeat, setCostPerSeat] = useState(0);
@@ -94,7 +84,7 @@ const RiderFinder = () => {
   /** @type React.MutableRefObject<HTMLInputElement>*/
   const destinationRef = useRef();
   const {isLoaded} = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBaE0BFCbpDBdN5NkUK2DA-2Jm7IRnoGZg" 
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API
     , libraries: libraries
   }
   )
@@ -139,7 +129,7 @@ const calculateCost = (cost) => {
 }
 
   const handleGeocodeLocation = async (location) => {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyBaE0BFCbpDBdN5NkUK2DA-2Jm7IRnoGZg`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.REACT_APP_GOOGLE_API}`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -196,11 +186,8 @@ const calculateCost = (cost) => {
   return (
 
 
-    <div className='main-page'> 
-        <div className='nav-container'>
-          
-        </div>
-        <div className='navMenu' >
+    <div className='main-page'>
+{/*         <div className='navMenu' >
           <a href='/riderHome'>Rider Home</a> &nbsp; &nbsp;
           <a href='/riderLogin'>Find a Ride</a> &nbsp; &nbsp;
           <a href='/riderpastRides'>Past Rides</a> &nbsp; &nbsp;
@@ -209,7 +196,9 @@ const calculateCost = (cost) => {
 
         <div className='seacrh-gif-container'>
         <img className="search-carpool" src="https://www.jojobrt.com/wp-content/uploads/2022/02/attuare_progetto_carpooling_PSCL.gif"/>
-        </div>
+        </div> */}
+        <RiderNavBar/>
+        <GifComponent/>
         <div className='seacrh-container'>
           <div className='search-container-form'>
             <form className="search-login-form">
@@ -245,7 +234,7 @@ const calculateCost = (cost) => {
             </form>
           </div>  
           <div className='map-container'>
-          <div className='googleMap'>
+          <div className='rider-googleMap'>
       <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}

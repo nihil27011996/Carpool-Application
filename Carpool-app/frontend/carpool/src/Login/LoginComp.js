@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BrowserRouter as Router, Route, Routes ,Link } from 'react-router-dom';
 import './Login.css';
-
-import img from '../Images/carrrr.avif';
+import { useDispatch , useSelector } from 'react-redux';
+import { storeDriver } from '../Slice/driverSlice';
+import { storeRider } from '../Slice/riderSlice.js';
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,6 +14,7 @@ const Login = () => {
   const [riderLoginButton, setRiderLoginButton] = useState(false);
   const [driverLoginButton, setDriverLoginButton] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -74,15 +75,16 @@ const Login = () => {
       if (existingRecordData.userName == username && existingRecordData.userPassword == password) {
         if(existingRecordData.commuterType === 'Rider' ){
           setRiderLoginButton(true);
-           localStorage.setItem('rider', JSON.stringify(existingRecordData));
-           
+           //localStorage.setItem('rider', JSON.stringify(existingRecordData));
+           dispatch(storeRider(existingRecordData));
            navigate('/riderLogin');
             return;
         }
         else if (existingRecordData.commuterType === 'Driver'){
           console.log('entered')
             setDriverLoginButton(true);
-            localStorage.setItem('driver', JSON.stringify(existingRecordData));
+            //localStorage.setItem('driver', JSON.stringify(existingRecordData))
+            dispatch(storeDriver(existingRecordData));
             navigate('/driverLogin');
             return;
         }
