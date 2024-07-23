@@ -1,9 +1,6 @@
 import React, { useState} from 'react';
 import '../Navbar/gifcomponent.css';
 const gifComponent = () => {
-const storedData = localStorage.getItem('driver');
-const driverData = JSON.parse(storedData);
-const driverId = driverData.userName;
 
   return (
           <div className='driver-seacrh-gif-container'>

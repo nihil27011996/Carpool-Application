@@ -74,9 +74,18 @@ const  RideRequestitems = (props) => {
 //a return function with all the div where all the container will load which is existing or created
   return (
     <div className='rider-details'>
-      <p className="rider-name"> {props.userName} has requested a ride!</p>
-    <button className='acceptbtn' onClick={handleAcceptRider}>ACCEPT</button>
-    <button className='rejectbtn' onClick={handleRejectRider}>REJECT</button>
+      <div className='grid-items'>
+        <div className='div-text'>
+          <p className="rider-name"> {props.userName} has requested a ride!</p>
+        </div>
+        
+        <div className='button-div'>
+          <button className='acceptbtn-driver' onClick={handleAcceptRider}>ACCEPT</button>
+          <button className='rejectbtn-driver' onClick={handleRejectRider}>REJECT</button>
+        </div>
+      </div>
+
+
     </div>
 
   );

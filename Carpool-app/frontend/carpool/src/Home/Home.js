@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes ,Link } from 'react-router-dom';
 import './Home.css';
 import img from '../Images/home5.jpeg';
 
-
 const Home = () =>{
 
     return(
@@ -10,10 +9,7 @@ const Home = () =>{
   
 
         <div className='main'>
-             {/* <div classNmae = 'home-container'> */}
              <img className='home5' src={img}  alt="logo"/>
-              
-               
                 <div className = 'container-button'>
                 <Link to ='/login'>
                     <button className='car'>
@@ -21,7 +17,6 @@ const Home = () =>{
                     </button>
                 </Link>
                 </div>
-            {/* </div> */}
         </div> 
       
             

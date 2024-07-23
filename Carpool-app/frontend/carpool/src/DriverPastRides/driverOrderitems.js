@@ -139,11 +139,11 @@ const [error,setError] = useState('');
 
 //a return function with all the div where all the container will load which is existing or created
 return (
-  <div className='rider-details' >
-    <p className="rider-name"> Hello {props.driverid}, below are your drive details : </p>
-    <p className="rider-name"> {props.origin}</p>
-    <p className="rider-name"> {props.destination}</p>
-    <p className="rider-name" onClick={displayRiders}> {props.orders} is your order number.</p>
+  <div className='driver-details' >
+    <p className="driver-name"> Hello {props.driverid}, below are your drive details : </p>
+    <p className="driver-name"> {props.origin}</p>
+    <p className="driver-name"> {props.destination}</p>
+    <p className="driver-name" onClick={displayRiders}> {props.orders} is your order number.</p>
   <button className='acceptbtn' onClick={handleAcceptRider}>Complete the ride</button>
   <button className='rejectbtn' onClick={handleRejectRider}>Delete the Ride</button>
 

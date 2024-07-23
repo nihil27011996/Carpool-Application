@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useRef, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css';
 import { useDispatch , useSelector } from 'react-redux';
 import { storeDriver } from '../Slice/driverSlice';
 import { storeRider } from '../Slice/riderSlice.js';
+/* import { setupConnection } from '../Slice/socketSlice'; */
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -15,6 +16,12 @@ const Login = () => {
   const [driverLoginButton, setDriverLoginButton] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+/*   useEffect(() => {
+      // Dispatch the setupConnection action to establish the socket connection
+      dispatch(setupConnection());
+  }, []); */
+
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -81,10 +88,13 @@ const Login = () => {
             return;
         }
         else if (existingRecordData.commuterType === 'Driver'){
-          console.log('entered')
             setDriverLoginButton(true);
             //localStorage.setItem('driver', JSON.stringify(existingRecordData))
             dispatch(storeDriver(existingRecordData));
+            //connect();
+            //dispatch(setConnected(true));
+            //disconnect();
+            /* setupConnection(); */
             navigate('/driverLogin');
             return;
         }

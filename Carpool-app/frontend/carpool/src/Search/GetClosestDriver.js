@@ -216,7 +216,7 @@ const GetClosestDriver =  (props) => {
     
   }
   return (
-    <div class="main_driver" style={{position: 'relative'}}>
+    <div className="main_driver" >
     {closestDriver ? (
 <div className="driver-det" >
 <details>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import emailjs from 'emailjs-com';
 import Confetti from 'react-confetti';
-
+import '../Search/Search.css';
 
 const Payment = ({ riderUserName, riderEmail , cost}) => {
   const [paymentComplete, setPaymentComplete] = useState(false);

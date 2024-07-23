@@ -2,6 +2,7 @@
 
 import React, { useState ,useEffect } from 'react';
 import DriverItems from './driverItems.js'
+import './riderOrderItems.css';
 
 const  RiderOrderitems = (props) => {
 const [rideRequest,setRideRequest] = useState([]);
@@ -103,10 +104,11 @@ const [error,setError] = useState('');
   }
 //a return function with all the div where all the container will load which is existing or created
 return (
-  <div className='rider-details' >
-    <p className="rider-name"> Hello {props.riderId}, below are your ride details : </p>
-    <p className="rider-name"> {props.origin}</p>
-    <p className="rider-name"> {props.destination}</p>
+  <div className='rider-past-details' >
+    <p className="rider-order-name"> Hello {props.riderId}, below are your ride details : </p>
+    <p className="rider-order-name"> $ {props.cost}</p>
+    <p className="rider-order-name"> {props.destination}</p>
+      
   <div>
   {rideRequestData}
   </div>

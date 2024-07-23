@@ -1,26 +1,48 @@
 import React, { useState,useEffect , useRef } from 'react';
-import { Link } from 'react-router-dom';
 import RideRequestItems from '../rideRequestItems/rideRequestItems.js';
 import { useSelector } from 'react-redux';
+import '../DriverApproval/DriverApproval.css'
 import DriverNavBar from '../Navbar/navBarComponent-driver.js';
 import GifComponent from '../Navbar/gifcomponent.js';
+import {socket} from '../Navbar/Navbar';
+
 
 const Driverapproval = () => {
 /*   const storedData = localStorage.getItem('driver');
-  const driverData = JSON.parse(storedData); */
+  const driverData? = JSON.parse(storedData); */
   const driverData = useSelector(state => state.driver.driver);
-  const driverId = driverData.userName; 
+  const driverId = driverData?.userName; 
   const [rideRequest,setRideRequest] = useState([]);
   const [driverOrders,setDriverOrders] = useState([]);
   const [rating,setsetRating] = useState(0);
   const [error,setError] = useState('');
   
 
-   useEffect( () => {
+/*    useEffect( () => {
     showProfileInformation();
     showDriverOrderInformation();
   }, []); 
- 
+  */
+
+  useEffect(() => {
+    fetchInitialData();
+
+    socket.on('approval_notification', (notificationData) => {
+      // Handle the notification data received from the server
+      fetchInitialData();
+      // You can update the UI, show a notification, or perform any other action here
+    });
+
+    return () => {
+      socket.off('newRideRequest');
+    };
+  }, [driverId]);
+
+  const fetchInitialData = async () => {
+    showProfileInformation();
+    showDriverOrderInformation();
+  };
+
   const showProfileInformation = async () => {
     try {
       const response = await fetch(`http://localhost:9000/riderRequest/`);
@@ -118,17 +140,18 @@ const Driverapproval = () => {
   );
 
   return (
-    <div >
-      <DriverNavBar driver = {driverData}/>
-      <GifComponent/>
-<div className="alert">
-        <span className="closebtn">&times;</span>  
-        <strong>Hey, {driverId} </strong> You have a Ride Request !
+    <div className='driver-approval-page'>
+      <div className='driver-approval-page-navarea'>      
+        <DriverNavBar driver = {driverData}/>
+        <GifComponent/>
       </div>
-<div className="underlay-photo"></div>
-      <div className="underlay-black"></div>
-   
-      <div >
+
+{/*         <div className="alert">
+                <span className="closebtn">&times;</span>  
+                <strong>Hey, {driverId} </strong> You have a Ride Request !
+        </div> */}
+          
+      <div className='data-area'>
         {data}
       </div>
 

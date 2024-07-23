@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Search from '../Search/search.js';
 import DriverRide from '../Driver/DriverCreateRide.js';
@@ -14,42 +14,31 @@ import Payment from '../Payment/payment';
 import DriverApproval from '../DriverApproval/driverApproval.js';
 import DriverPastRides from '../DriverPastRides/driverPastRides.js';
 import RiderPastRides from '../RiderPastRides/riderPastRides.js';
-
+import { io } from 'socket.io-client';
+export const socket = io('http://localhost:9000');
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  
   return (
-
-     
+    
     <Router>
- 
-{/*      <Link to='/DriverRide'>Post the Ride for the Commuters</Link>
-   <Link to='/about'>about</Link> */}
-   
-{/*    <Link to='/Search'>Search Ride</Link> */}
-   {/* <Link to='/Create'>PROFILE CREATION</Link> */}
-
-
- 
-   <Routes>
-     <Route path="/DriverRide" element={<DriverRide />}/>
-    {/* <Route  path="/*" element={<HomePage/>} /> */}
-     <Route path="/about" element={<AboutPage/>} />
-     <Route path="/search" element={<Search/>} />
-     <Route path="/payment" element={<Payment/>} />
-     {/* <Route path="/search" element={<Search/>} /> */}
-     <Route path="/*" element={<Home/>}/>
-     <Route path="/homePage" element={<Home/>}/>
-     <Route path="/createProfile" element={<CreateProfile/>} /> 
-     <Route path="/login" element={<Login/>}/>
-     <Route path="/riderLogin" element={<Search />}/>
-     <Route path="/driverLogin" element={<DriverComp/>}/>
-     <Route path="/driverHome" element={<DriverHome/>}/>
-     <Route path="/riderHome" element={<RiderHome/>}/>
-     <Route path="/driverApproval" element={<DriverApproval/>}/>
-     <Route path="/pastRides" element={<DriverPastRides/>}/>
-     <Route path="/riderpastRides" element={<RiderPastRides/>}/>
-   </Routes>
+      <Routes>
+        <Route path="/DriverRide" element={<DriverRide />}/>
+        <Route path="/about" element={<AboutPage/>} />
+        <Route path="/search" element={<Search/>} />
+        <Route path="/payment" element={<Payment/>} />
+        <Route path="/*" element={<Home/>}/>
+        <Route path="/homePage" element={<Home/>}/>
+        <Route path="/createProfile" element={<CreateProfile/>} /> 
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/riderLogin" element={<Search />}/>
+        <Route path="/driverLogin" element={<DriverComp/>}/>
+        <Route path="/driverHome" element={<DriverHome/>}/>
+        <Route path="/riderHome" element={<RiderHome/>}/>
+        <Route path="/driverApproval" element={<DriverApproval/>}/>
+        <Route path="/pastRides" element={<DriverPastRides/>}/>
+        <Route path="/riderpastRides" element={<RiderPastRides/>}/>
+      </Routes>
 
     </Router>  
   );

@@ -1,13 +1,19 @@
 //import * as reminderService from './../services/reminder-service.js';
 import {saveRiderOrderReq, getRiderOrderReq, removeRiderOrderReq, updateDetails, searchRiderOrderReq ,getDriverOrderNumberReq} from '../services/riderOrderReq-service.js';
 //reminderService.save();
+import { io } from '../../server.js';
 
 //define the method for reminder creation
 export const post = async(request, response) =>{
     try{
     const newRiderOrder = request.body;
     const savedRiderOrder = await saveRiderOrderReq(newRiderOrder);
-   setSuccessfulResponse(savedRiderOrder, response);
+    io.emit('approval_notification', {
+        orderNumber: savedRiderOrder.DriverOrderNumber,
+        riderId: savedRiderOrder.RiderId,
+        message: 'New rider Request approve or reject',
+      });
+    setSuccessfulResponse(savedRiderOrder, response);
     } catch(err){
         setErrorResponse(err,response);
     }

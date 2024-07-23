@@ -5,6 +5,7 @@ export const driverSlice = createSlice({
         name: 'driver',
         initialState: {
             driver: null,
+            isLoggedIn: false,
         },
    reducers: {
         storeDriver: (state , action) => {
@@ -12,10 +13,12 @@ export const driverSlice = createSlice({
             return {
                 ...state,
                 driver: driverData,
+                isLoggedIn: true
               };
         },
         removeDriver: (state , action) => {
             state.driver = null;
+            state.isLoggedIn = false;
         }
     },
     },

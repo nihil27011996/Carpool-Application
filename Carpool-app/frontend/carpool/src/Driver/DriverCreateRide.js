@@ -13,7 +13,7 @@ const DriverRide = () => {
   const parsedData = useSelector(state => state.driver.driver);
   console.log(parsedData);
   const navigate = useNavigate();
-  const driverId = parsedData.userName;
+  const driverId = parsedData?.userName;
   const [data, setData] = useState(
     {DriverOrderNumber: '',
       DriverId:'',
@@ -48,7 +48,7 @@ const DriverRide = () => {
 
   const fetchData = async () => {
  /*    try { */
- const existingRecord = await fetch(`http://localhost:9000/riderOrders/${parsedData.userName}`);
+ const existingRecord = await fetch(`http://localhost:9000/riderOrders/${parsedData?.userName}`);
  if (existingRecord.ok) {
    const existingRecordData = await existingRecord.json();
    if (!existingRecordData) {

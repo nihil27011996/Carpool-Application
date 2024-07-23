@@ -132,8 +132,8 @@ left: 150px;
 body {
   font-family: 'Open Sans';
   font-weight: 100;
-  display: flex;
-  overflow: scroll;
+  display: flex;/* 
+  overflow: scroll; */
 }
 div input {
   ::-webkit-input-placeholder {

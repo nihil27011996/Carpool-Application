@@ -1,4 +1,4 @@
-.driver-home-navMenu {
+.driver-navMenu {
   border-radius: 20px;
   border-color: black;
   background-color: #05386b;
@@ -15,10 +15,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index: 3;
 }
 
 
-.driver-home-navMenu a {
+.driver-navMenu a {
   color: #f6f4e6;
   text-decoration: none;
   font-size: 1.5em;
@@ -29,11 +30,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.driver-home-navMenu a:hover {
+.driver-navMenu a:hover {
   color: #edb6a4;
 }
 
-.driver-home-navMenu .dot {
+.driver-navMenu .dot {
   width: 6px;
   height: 6px;
   background: #9ebdf2;
@@ -43,31 +44,31 @@
   transition: all 0.2s ease-in-out;
 }
 
-.driver-home-navMenu a:nth-child(1):hover ~ .dot {
+.driver-navMenu a:nth-child(1):hover ~ .dot {
   transform: translateX(30px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
 
-.driver-home-navMenu a:nth-child(2):hover ~ .dot {
+.driver-navMenu a:nth-child(2):hover ~ .dot {
   transform: translateX(110px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
 
-.driver-home-navMenu a:nth-child(3):hover ~ .dot {
+.driver-navMenu a:nth-child(3):hover ~ .dot {
   transform: translateX(200px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
 
-.driver-home-navMenu a:nth-child(4):hover ~ .dot {
+.driver-navMenu a:nth-child(4):hover ~ .dot {
   transform: translateX(285px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
 
-.driver-home-navMenu a:nth-child(5):hover ~ .dot {
+.driver-navMenu a:nth-child(5):hover ~ .dot {
   transform: translateX(285px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
@@ -75,7 +76,7 @@
 
 
 
-.driver-seacrh-gif-container {
+/* .driver-seacrh-gif-container {
   position:absolute;
   height: 150px;
   width: 250px;
@@ -88,3 +89,4 @@
   height: 150px;
   width: 250px;
 }
+ */

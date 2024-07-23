@@ -1,20 +1,30 @@
 import React, { useState} from 'react';
 import '../Navbar/navBarComponent-rider.css';
-const riderNavBar = () => {
-const storedData = localStorage.getItem('rider');
-const riderData = JSON.parse(storedData);
-const riderId = riderData.userName;
+import { useDispatch } from 'react-redux';
+import { removeRider } from '../Slice/riderSlice';
+import { Link } from 'react-router-dom';
+
+const RiderNavBar = ({riderData}) => {
+/* const storedData = localStorage.getItem('rider');
+const riderData = JSON.parse(storedData); */
+const riderId = riderData?.userName;
+const dispatch = useDispatch();
+const handleLogoutButton = () => {
+  dispatch(removeRider());
+}
+
+
 
   return (
         <div className='rider-home-navMenu' >
-          <a href='/riderHome'>Rider Home</a>
-          <a href='/riderLogin'>Find a Ride</a>
-          <a href='/riderpastRides'>Past Rides</a>
-          <a href='/homePage'>Logout</a>
+          <Link to='/riderHome'>Rider Home</Link>
+          <Link to='/riderLogin'>Find a Ride</Link>
+          <Link to='/riderpastRides'>Past Rides</Link>
+          <Link to='/homePage' onClick={handleLogoutButton}>Logout</Link>
         </div>
 
 
         );
 };
 
-export default riderNavBar;
+export default RiderNavBar;

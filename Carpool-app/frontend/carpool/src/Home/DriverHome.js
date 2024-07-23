@@ -5,6 +5,7 @@ import '../Home/DriverHome.css';
 import DriverNavBar from '../Navbar/navBarComponent-driver.js';
 import GifComponent from '../Navbar/gifcomponent.js';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const libraries = ['places'];
 const DriverRide = () => {
@@ -19,8 +20,12 @@ const DriverRide = () => {
   const [error,setError] = useState('');
   const [rate, setRate] = useState(0);
   const [imageUrl, setImageUrl] = useState(''); 
-
+  const navigate = useNavigate();
+  if(!driverData) {
+    navigate('/login');
+  }
    useEffect( () => {
+
     showProfileInformation();
   }, []); 
 

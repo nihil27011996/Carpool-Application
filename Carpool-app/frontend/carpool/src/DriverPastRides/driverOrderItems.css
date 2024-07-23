@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.rider-details {
+.driver-details {
   all: initial;
   margin-left: 20px;
   padding: 30px;
@@ -38,7 +38,7 @@
   color: rgb(222, 221, 221);
 }
 
-.rider-name {
+.driver-name {
   grid-column: 1/span 2;
 }
 
